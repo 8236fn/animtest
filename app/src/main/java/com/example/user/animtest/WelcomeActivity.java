@@ -3,6 +3,7 @@ package com.example.user.animtest;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
@@ -18,6 +19,12 @@ public class WelcomeActivity extends AppCompatActivity implements Animation.Anim
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent().setClass(WelcomeActivity.this,MainActivity.class));
+            }
+        },3000);
         context = this;
 
         //取消ActionBar
@@ -43,8 +50,8 @@ public class WelcomeActivity extends AppCompatActivity implements Animation.Anim
 
     @Override
     public void onAnimationEnd(Animation animation) {
-        startActivity(new Intent(context,MainActivity.class));
-        finish();
+        //startActivity(new Intent(context,MainActivity.class));
+        //finish();
     }
 
     @Override
